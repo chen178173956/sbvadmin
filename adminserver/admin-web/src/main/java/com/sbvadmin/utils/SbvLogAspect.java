@@ -109,8 +109,8 @@ public class SbvLogAspect {
             userService.updateById(updateUser);
         }
         // 时间信息
-        log.setCreatedAt(LocalDateTime.now());
-        log.setUpdatedAt(LocalDateTime.now());
+        log.setCreateTime(LocalDateTime.now());
+        log.setUpdateTime(LocalDateTime.now());
         log.setVersion(version);
         log.setTakeUpTime((int)(System.currentTimeMillis() - takeUpTime.get()));
         log.setLevel(Log.ACTION_LEVEL);

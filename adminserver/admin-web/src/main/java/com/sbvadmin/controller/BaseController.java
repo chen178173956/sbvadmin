@@ -84,7 +84,7 @@ public class BaseController<S extends IService<T>, T extends BaseModel> {
 
     @GetMapping("")
     public IPage<T> getItems(@RequestParam(value="id" ,required=false) Long id,
-                             @RequestParam(value="createdAt[]" ,required=false) String[] createdAt,
+                             @RequestParam(value="createTime[]" ,required=false) String[] createTime,
                              @RequestParam(value="likeSearch" ,required=false) String likeSearch,
                              @RequestParam(value="equalSearch" ,required=false) String equalSearch,
                              @RequestParam(value="field" ,required=false) String field,
@@ -94,8 +94,8 @@ public class BaseController<S extends IService<T>, T extends BaseModel> {
         QueryWrapper<T> queryWrapper = new QueryWrapper<>();
         if (id != null) // id精准搜索
             queryWrapper.eq(this.getTableName()+"id",id);
-        if (createdAt != null) // 创建日期范围搜索
-            queryWrapper.between(this.getTableName()+"created_at",createdAt[0],createdAt[1]);
+        if (createTime != null) // 创建日期范围搜索
+            queryWrapper.between(this.getTableName()+"create_time",createTime[0],createTime[1]);
         if (likeSearch != null) // 自定义模糊内容搜索：比如name等
         {
             queryWrapper.and(wq ->{

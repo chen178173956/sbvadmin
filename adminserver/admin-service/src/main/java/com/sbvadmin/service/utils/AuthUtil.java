@@ -29,7 +29,7 @@ public class AuthUtil {
                 menuChildMap.put("path",permission.getPath());
                 menuChildMap.put("name",permission.getName());
                 menuChildMap.put("component",permission.getComponent());
-                menuChildMap.put("createTime",permission.getCreatedAt());
+                menuChildMap.put("createTime",permission.getCreateTime());
                 menuChildMap.put("orderNo",permission.getOrderNo());
                 menuChildMap.put("status",permission.getStatus());
                 menuChildMap.put("type",permission.getType());

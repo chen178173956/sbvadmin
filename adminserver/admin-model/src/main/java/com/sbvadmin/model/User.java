@@ -48,10 +48,10 @@ public class User implements UserDetails , Serializable {
     private String unionId;
     private Boolean locked;
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createdAt;
+    private LocalDateTime createTime;
 //    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8") // 解决返回带T的问题 改成LocalDateTimeSerializerConfig
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateTime;
 
     @TableField(exist = false)
     private List<Long> roleIds; // 方便前端显示，分配用户角色

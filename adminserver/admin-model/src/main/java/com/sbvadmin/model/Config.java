@@ -61,12 +61,12 @@ public class Config extends BaseModel implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createdAt;
+    private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateTime;
 
 
 }

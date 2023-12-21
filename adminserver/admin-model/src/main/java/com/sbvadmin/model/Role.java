@@ -51,9 +51,9 @@ public class Role extends BaseModel implements Serializable {
      */
     private Integer orderNo;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createTime;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateTime;
 
     @TableField(exist = false)
     private List<Long> menu;

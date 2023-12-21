@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.fillStrategy(metaObject, "createdAt", LocalDateTime.now());
-        this.fillStrategy(metaObject, "updatedAt", LocalDateTime.now());
+        this.fillStrategy(metaObject, "createTime", LocalDateTime.now());
+        this.fillStrategy(metaObject, "updateTime", LocalDateTime.now());
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.fillStrategy(metaObject, "updatedAt", LocalDateTime.now());
+        this.fillStrategy(metaObject, "updateTime", LocalDateTime.now());
     }
 }

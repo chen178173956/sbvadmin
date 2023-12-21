@@ -22,7 +22,7 @@ export const searchFormSchema: FormSchema[] = [
     colProps: { span: 8 },
   },
   {
-    field: 'createdAt',
+    field: 'createTime',
     component: 'RangePicker',
     componentProps: {
       format: 'YYYY-MM-DD HH:mm:ss',

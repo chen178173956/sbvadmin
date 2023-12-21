@@ -1,7 +1,7 @@
 --
 -- 新增菜单
 --
-INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `create_time`, `update_time`)
 VALUES (36, 4, '/api/depts','ANY', '机构管理', 'routes.sbvadmin.Dept.dept','机构管理','/dept','/sbvadmin/dept/DeptIndex.vue', '','1','1','1','4',now(), now()),
        (37, 36, '/api/depts/getDeptsAsTree','GET', '机构列表', '','机构列表','','', '','1','2','1','1',now(), now()),
        (38, 36, '/api/depts','POST', '新增机构', '','新增机构','','', '','1','2','1','1',now(), now()),
@@ -25,7 +25,7 @@ VALUES (2, 36),
 --
 -- 补充获取详情的权限点
 --
-INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `create_time`, `update_time`)
 VALUES (41, 5, '/api/users/**','GET', '用户详情', '','用户详情','','', '','1','2','1','1',now(), now()),
        (42, 10, '/api/permissions/**','GET', '菜单详情', '','菜单详情','','', '','1','2','1','1',now(), now()),
        (43, 15, '/api/roles/**','GET', '角色详情', '','角色详情','','', '','1','2','1','1',now(), now()),

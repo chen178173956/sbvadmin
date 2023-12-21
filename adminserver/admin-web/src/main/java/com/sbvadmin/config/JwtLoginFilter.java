@@ -118,8 +118,8 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         log.setUid(user.getId());
         log.setUsername(authResult.getName());
         // 时间信息
-        log.setCreatedAt(LocalDateTime.now());
-        log.setUpdatedAt(LocalDateTime.now());
+        log.setCreateTime(LocalDateTime.now());
+        log.setUpdateTime(LocalDateTime.now());
         log.setVersion(version);
         log.setTakeUpTime(0);
         log.setLevel(Log.ACTION_LEVEL);
@@ -136,13 +136,13 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
         PrintWriter writer = resp.getWriter();
         ResultFormat resultFormat = ResultFormat.success(ErrorCode.SUCCESS);
         if (failed instanceof InsufficientAuthenticationException) {
-            resultFormat.setMessage("请先登录");
+            resultFormat = ResultFormat.fail(ErrorCode.LOGIN_FAILED,"请先登录");
         } else if (failed instanceof BadCredentialsException) {
-            resultFormat.setMessage("用户名或密码错误");
+            resultFormat = ResultFormat.fail(ErrorCode.LOGIN_FAILED,"用户名或密码错误");
         } else if (failed.getCause() instanceof DisabledException) {
-            resultFormat.setMessage("账号已经被禁用,请联系管理员");
+            resultFormat = ResultFormat.fail(ErrorCode.LOGIN_FAILED,"账号已经被禁用,请联系管理员");
         } else {
-            resultFormat.setMessage("请先用户认证失败,请检查后重试登录");
+            resultFormat = ResultFormat.fail(ErrorCode.LOGIN_FAILED,"请先用户认证失败,请检查后重试登录");
         }
         writer.write(new ObjectMapper().writeValueAsString(resultFormat));
         writer.flush();

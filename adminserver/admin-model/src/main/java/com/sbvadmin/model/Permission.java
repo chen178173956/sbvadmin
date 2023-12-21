@@ -89,9 +89,9 @@ public class Permission implements Serializable {
      */
     private Integer orderNo;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createTime;
 
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateTime;
     @TableField(exist = false)
     private List<Role> roles;
 }

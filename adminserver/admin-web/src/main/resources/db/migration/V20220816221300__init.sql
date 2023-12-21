@@ -20,8 +20,8 @@ CREATE TABLE `sys_user`
     `last_login_ip` varchar(20) NOT NULL DEFAULT '' COMMENT '最后登录ip',
     `mp_open_id`    varchar(64) NOT NULL DEFAULT '' COMMENT '微信open_id',
     `union_id`      varchar(64) NOT NULL DEFAULT '' COMMENT '微信union_id',
-    `created_at`    datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`    datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`    datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`    datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='用户';
 
@@ -29,7 +29,7 @@ CREATE TABLE `sys_user`
 -- 转存表中的数据 `sys_user`
 --
 insert into `sys_user` (`id`, `nickname`, `phone`, `email`, `activated`, `locked`, `username`, `password`, `avatar`, `home_path`, `last_login_at`,
-                    `last_login_ip`, `mp_open_id`, `union_id`, `created_at`, `updated_at`)
+                    `last_login_ip`, `mp_open_id`, `union_id`, `create_time`, `update_time`)
 values (1, '超级管理员', '13912341234', 'likeboat@163.com', 1, 0, 'root',
         '$2a$10$ySG2lkvjFHY5O0./CPIE1OI8VJsuKYEzOYzqIa7AJR6sEgSzUFOAm',
         'https://q1.qlogo.cn/g?b=qq&nk=190848757&s=640', '/dashboard/analysis',NULL, '', '', '', now(), now()),
@@ -53,15 +53,15 @@ CREATE TABLE `sys_role`
     `description` text COLLATE utf8mb4_unicode_ci COMMENT '描述',
     `status`      tinyint NOT NULL DEFAULT 1 COMMENT '状态:0-禁用;1-启用',
     `order_no`    decimal(10,2) NOT NULL DEFAULT 0.0 COMMENT '排序',
-    `created_at`  datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`  datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`  datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='角色';
 --
 -- 转存表中的数据 `sys_role`
 --
 
-INSERT INTO `sys_role` (`id`, `name`, `name_zh`, `description`, `status`,`order_no`,`created_at`, `updated_at`)
+INSERT INTO `sys_role` (`id`, `name`, `name_zh`, `description`, `status`,`order_no`,`create_time`, `update_time`)
 VALUES (1, 'ROLE_root', '超级管理员', '超级管理员',1,1, now(), now()),
        (2, 'ROLE_admin', '管理员', '普通管理员',1,1, now(), now()),
        (3, 'ROLE_user', '普通用户', '普通用户',1,1, now(), now());
@@ -109,8 +109,8 @@ CREATE TABLE `sys_permission`
     `type`        tinyint NOT NULL DEFAULT 1 COMMENT '权限类型:0-目录;1-菜单;2-按钮',
     `status`      tinyint NOT NULL DEFAULT 1 COMMENT '状态:0-禁用;1-启用',
     `order_no`    decimal(10,2) NOT NULL DEFAULT 0.0 COMMENT '排序',
-    `created_at`  datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`  datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`  datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='权限';
 -- 预留1-999给sbvamin框架，方便框架升级
@@ -120,7 +120,7 @@ CREATE TABLE `sys_permission`
 -- 这里的设计很关键，request_method即指http请求的方法，这样设计可以既实现标准的Restful api设计规范，又能做到权限控制到按钮级别
 --
 
-INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `create_time`, `update_time`)
 VALUES (1, 0, '/api/dashboard','ANY', '首页', 'routes.dashboard.dashboard','首页目录','/dashboard','LAYOUT', 'bx:bx-home','1','0','1','1',now(), now()),
        (2, 1, '/api/dashboard/workbench','GET', '工作台', 'routes.dashboard.workbench','工作台','workbench','/sbvadmin/dashboard/workbench/index', '','1','1','1','1',now(), now()),
        (3, 1, '/api/dashboard/analysis','GET', '分析页', 'routes.dashboard.analysis','分析页','analysis','/sbvadmin/dashboard/analysis/index', '','1','1','1','2',now(), now()),
@@ -215,8 +215,8 @@ CREATE TABLE `sys_log`
     `ip`            varchar(50)  NULL DEFAULT NULL COMMENT '请求IP',
     `address`       varchar(50)  NULL DEFAULT NULL COMMENT '请求地址',
     `version`       varchar(50)  NULL DEFAULT NULL COMMENT '版本号',
-    `created_at`    datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`    datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`    datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`    datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='日志';
 
@@ -231,15 +231,15 @@ CREATE TABLE `sys_config` (
     `name`        varchar(100) NOT NULL COMMENT '配置名',
     `description` text COLLATE utf8mb4_unicode_ci COMMENT '描述',
     `order_no`    decimal(10,2) NOT NULL DEFAULT 0.0 COMMENT '排序',
-    `created_at`  datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`  datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`  datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='配置';
 
 -- ----------------------------
 -- Records of sys_config
 -- ----------------------------
-INSERT INTO `sys_config` (`symbol`, `value`, `name`,`description`, `order_no`, `created_at`,`updated_at`)
+INSERT INTO `sys_config` (`symbol`, `value`, `name`,`description`, `order_no`, `create_time`,`update_time`)
 VALUES ('common_title', 'SBVADMIN','平台名称','',0,now(),now());
 
 -- ----------------------------
@@ -256,15 +256,15 @@ CREATE TABLE `sys_dict` (
     `icon`          text COLLATE utf8mb4_unicode_ci COMMENT '图标',
     `description`   text COLLATE utf8mb4_unicode_ci COMMENT '描述',
     `order_no`      decimal(10,2) NOT NULL DEFAULT 0.0 COMMENT '排序',
-    `created_at`    datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`    datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`    datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`    datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='字典';
 
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
-INSERT INTO `sys_dict` (`pid`, `type`, `type_name`, `value`, `label`,`icon`,`description`, `order_no`, `created_at`,`updated_at`)
+INSERT INTO `sys_dict` (`pid`, `type`, `type_name`, `value`, `label`,`icon`,`description`, `order_no`, `create_time`,`update_time`)
 VALUES (0, 'sex','性别','1', '男','性别描述','',0,now(),now()),
        (0, 'sex','性别','2', '女','性别描述','',0,now(),now()),
        (0, 'education','学历','1', '大专','学历描述','',0,now(),now()),
@@ -281,15 +281,15 @@ CREATE TABLE `sys_dept` (
     `pid`           bigint UNSIGNED NOT NULL COMMENT '上级机构ID，一级机构为0',
     `name`          varchar(50) DEFAULT NULL COMMENT '机构名称',
     `order_no`      decimal(10,2) NOT NULL DEFAULT 0.0 COMMENT '排序',
-    `created_at`    datetime NULL DEFAULT NULL COMMENT '创建时间',
-    `updated_at`    datetime NULL DEFAULT NULL COMMENT '修改时间',
+    `create_time`    datetime NULL DEFAULT NULL COMMENT '创建时间',
+    `update_time`    datetime NULL DEFAULT NULL COMMENT '修改时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci comment='机构';
 
 -- ----------------------------
 -- Records of sys_role_permission
 -- ----------------------------
-INSERT INTO `sys_dept` (`id`, `pid`, `name`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_dept` (`id`, `pid`, `name`, `order_no`, `create_time`, `update_time`)
 VALUES (1, 0, '研发中心', 0, now(), now()),
        (2, 1, '软件部', 0, now(), now()),
        (3, 1, '硬件部', 0, now(), now()),

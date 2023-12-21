@@ -1,7 +1,7 @@
 --
 -- 新增菜单
 --
-INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `create_time`, `update_time`)
 VALUES (25, 4, '/api/getUserInfo','GET', '个人中心', 'layout.header.dropdownItemUserCenter','个人中心','/user-center','/sbvadmin/account/index', '','0','1','1','0',now(), now());
 --
 -- 默认将菜单分配给root

@@ -85,9 +85,9 @@ public class Log extends BaseModel implements Serializable {
      */
     private String version;
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdAt;
+    private LocalDateTime createTime;
 //    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateTime;
 
     @TableField(exist = false)
     private String nickname; // 生产日志的所属用户昵称,链表查询案例

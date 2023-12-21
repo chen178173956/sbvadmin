@@ -15,7 +15,7 @@ export interface ${entity} {
 
 export type ${entity}Params = BasicPageParams & {
   id: number;
-  createdAt: string;
+  createTime: string;
 };
 
 // 列表集合

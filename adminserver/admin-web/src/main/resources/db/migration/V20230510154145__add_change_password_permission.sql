@@ -1,7 +1,7 @@
 --
 -- 补充修改密码的权限点
 --
-INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `created_at`, `updated_at`)
+INSERT INTO `sys_permission` (`id`, `pid`, `request_url`, `request_method`, `name`, `title`, `description`, `path`, `component`, `icon`, `show_flag`, `type`, `status`, `order_no`, `create_time`, `update_time`)
 VALUES (49, 25, '/api/users/changePassword','POST', '修改密码', '','修改密码','','', '','1','2','1','1',now(), now());
 
 --

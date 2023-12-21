@@ -21,8 +21,8 @@
         <result column="home_path" property="homePath" jdbcType="VARCHAR"/>
         <result column="last_login_at" property="lastLoginAt" jdbcType="TIMESTAMP"/>
         <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR"/>
-        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
-        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <resultMap id="UserWithRoles" type="com.sbvadmin.model.User" extends="BaseResultMap">
         <collection property="roles" ofType="com.sbvadmin.model.Role">
@@ -43,7 +43,7 @@
     </resultMap>
     <select id="getUsersWithRoles" resultMap="UserWithRoles">
         select u.id, u.nickname, u.phone, u.email, u.activated, u.locked, u.username, u.avatar,u.last_login_at,
-               u.last_login_ip,u.home_path,u.created_at,u.updated_at,r.`id` as rid,r.`name` as rname,r.`name_zh` as rname_zh,
+               u.last_login_ip,u.home_path,u.create_time,u.update_time,r.`id` as rid,r.`name` as rname,r.`name_zh` as rname_zh,
                d.name as dname,d.`id` as did
         from sys_user u left join sys_user_role ur on u.`id`=ur.`uid`
             left join sys_role r on ur.`rid`=r.`id`
@@ -65,7 +65,7 @@
 
     <select id="getOwnUserWithRoles" resultMap="UserWithRoles">
         select u.id, u.nickname, u.phone,u.wechat,u.qq, u.email, u.activated, u.locked, u.username,u.password, u.avatar,u.last_login_at,
-        u.last_login_ip,u.home_path,u.created_at,u.updated_at,r.`id` as rid,r.`name` as rname,r.`name_zh` as rname_zh,
+        u.last_login_ip,u.home_path,u.create_time,u.update_time,r.`id` as rid,r.`name` as rname,r.`name_zh` as rname_zh,
         d.name as dname,d.`id` as did
         from sys_user u left join sys_user_role ur on u.`id`=ur.`uid`
         left join sys_role r on ur.`rid`=r.`id`
